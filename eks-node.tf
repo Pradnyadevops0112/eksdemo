@@ -7,12 +7,12 @@ resource "aws_instance" "kubectl-server" {
   vpc_security_group_ids      = [aws_security_group.allow_tls.id]
 
   tags = {
-    Name = "kubectl"
+    Name = "kubectl-server"
   }
 
 }
 
-resource "aws_eks_node_group" "node-grp" {
+resource "aws_eks_node_group" "pc-node-grp" {
   cluster_name    = aws_eks_cluster.eks.name
   node_group_name = "pc-node-group"
   node_role_arn   = aws_iam_role.worker.arn
